@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-nodejs-example": {
+    "ml-handwriting-ui": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-nodejs-example",
+            "outputPath": "dist/ml-handwriting-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,19 +64,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-nodejs-example:build",
+            "browserTarget": "ml-handwriting-ui:build",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-nodejs-example:build:production"
+              "browserTarget": "ml-handwriting-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-nodejs-example:build"
+            "browserTarget": "ml-handwriting-ui:build"
           }
         },
         "test": {
@@ -115,18 +115,26 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-nodejs-example:serve"
+            "devServerTarget": "ml-handwriting-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-nodejs-example:serve:production"
+              "devServerTarget": "ml-handwriting-ui:serve:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/ml-handwriting-ui",
+            "netlifyToken": "54UmJDjlznuM8KfaQfNFmCA60B5VTY9QDZQl60suX6U",
+            "siteId": "315ea7b3-9bbb-4257-9860-e428f346a6fa"
           }
         }
       }
     }
   },
-  "defaultProject": "angular-nodejs-example",
+  "defaultProject": "ml-handwriting-ui",
   "cli": {
     "analytics": "538ab48f-d51e-4edf-a47d-cedcd8047144"
   }

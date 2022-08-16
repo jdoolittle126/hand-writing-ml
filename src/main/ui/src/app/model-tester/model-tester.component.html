@@ -1,0 +1,32 @@
+<div class="container mt-2" >
+
+    <section class="card">
+        <h2 class="card-header">Test your model!</h2>
+        <div class="card-body">
+
+            <div class="row" *ngIf="previousSamples.length > 0">
+                <div *ngFor="let img of previousSamples;">
+                    <div class="col-3">
+                        <input-canvas class="text-center" [data]="img.input"></input-canvas>
+                        <p class="text-center font-weight-bold">{{img.character}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-around align-items-center">
+                <div class="col-4">
+                    <input-canvas class="text-center" [data]="sample" #input></input-canvas>
+                </div>
+
+                <network-visualizer *ngIf="networkResult != null" #visual class="col" [inputData]="networkResult" [colorEmpty]="'#FF0000'" [colorFull]="'#0000FF'" ></network-visualizer>
+
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button (click)="onClear()" class="btn btn-danger mr-2">Clear</button>
+            <button (click)="onTry()" class="btn btn-primary">Test</button>
+        </div>
+
+    </section>
+</div>

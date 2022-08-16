@@ -1,0 +1,54 @@
+<div>
+    <!-- MODEL BUILDER SETTINGS -->
+    <section>
+        <div class="container mt-2" [formGroup]="settingsForm" >
+            <div class="card">
+                <h2 class="card-header">Training Settings</h2>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="sampleNumber">Number of Samples</label>
+                            <input type="number" name="sampleNumber" class="form-control form-control-sm" formControlName="sampleNumber" id="sampleNumber">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="sessionName">Session Name</label>
+                            <input type="text" name="sessionName" class="form-control form-control-sm" formControlName="sessionName" id="sessionName">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button (click)="nextState()" [disabled]="builderState != 0" class="btn btn-primary">Training</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODEL TRAINING -->
+    <section>
+        <div class="container mt-2" *ngIf="builderState > 0" >
+            <div class="card">
+                <h2 class="card-header">Train the model</h2>
+                <div class="card-body">
+                    <div class="row">
+                        <div *ngFor="let img of images;">
+                            <div class="col-3">
+                                <app-canvas [data]="img" [trials]="settingsForm.value.sampleNumber" ></app-canvas>
+                            </div>
+                        </div>
+                        <app-canvas (isAdded)="onAdd($event)" *ngIf="builderState == 1" [trials]="settingsForm.value.sampleNumber"></app-canvas>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button (click)="onTrain()" [disabled]="builderState != 1 || images.length == 0" class="btn btn-primary">Train the Model!</button>
+                    <p *ngIf="builderState == 2">Loading... please wait!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
