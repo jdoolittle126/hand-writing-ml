@@ -1,53 +1,46 @@
-import { Component, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppService } from './app.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import {InputComponent} from "./input/input.component";
+import {BuilderState} from "./model-builder/model-builder.component";
+
+export enum AppState {
+  WELCOME,
+  TRAINING,
+  TESTING
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
+  title: string = 'ml-handwriting-ui';
+  appState: AppState = AppState.WELCOME;
+  session: string = '';
+  public boundedNextState = this.nextState.bind(this);
 
-  constructor(private appService: AppService) {}
-
-  title = 'angular-nodejs-example';
-
-  userForm = new FormGroup({
-    firstName: new FormControl('', Validators.nullValidator && Validators.required),
-    lastName: new FormControl('', Validators.nullValidator && Validators.required),
-    email: new FormControl('', Validators.nullValidator && Validators.required)
-  });
-
-  users: any[] = [];
-  userCount = 0;
-
-  destroy$: Subject<boolean> = new Subject<boolean>();
-
-  onSubmit() {
-    this.appService.addUser(this.userForm.value, this.userCount + 1).pipe(takeUntil(this.destroy$)).subscribe(data => {
-      console.log('message::::', data);
-      this.userCount = this.userCount + 1;
-      console.log(this.userCount);
-      this.userForm.reset();
-    });
+  public startTraining() {
+    if (this.appState == AppState.WELCOME) {
+      this.nextState();
+    }
   }
 
-  getAllUsers() {
-    this.appService.getUsers().pipe(takeUntil(this.destroy$)).subscribe((users: any[]) => {
-		this.userCount = users.length;
-        this.users = users;
-    });
+  public nextState(session: string = '') {
+    this.session = session;
+    switch (this.appState) {
+      case AppState.WELCOME:
+        this.appState = AppState.TRAINING;
+        break;
+      case AppState.TRAINING:
+        this.appState = AppState.TESTING;
+        break;
+      default:
+        this.appState = AppState.TESTING;
+    }
   }
 
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
-
-  ngOnInit() {
-	this.getAllUsers();
-  }
 }

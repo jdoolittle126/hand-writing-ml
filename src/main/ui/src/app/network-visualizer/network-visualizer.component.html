@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="grid-container">
+
+        <div class="inputs">
+            <p class="">Inputs:</p>
+            <grid-canvas [gridWidth]="inputData.inputsGrid.width" [gridHeight]="inputData.inputsGrid.height" #inputs></grid-canvas>
+        </div>
+
+        <div class="outputs">
+            <p class="">Outputs:</p>
+            <grid-canvas [gridWidth]="inputData.outputGrid.width" [gridHeight]="inputData.outputGrid.height" #outputs></grid-canvas>
+        </div>
+
+        <div class="weights1">
+            <p class="">Weights:</p>
+            <grid-canvas [gridWidth]="inputData.weights1Grid.width" [gridHeight]="inputData.weights1Grid.height" #weights1></grid-canvas>
+        </div>
+
+        <div class="hiddens">
+            <p class="">Hidden:</p>
+            <grid-canvas class="d-inline-block" [gridWidth]="inputData.hiddenGrid.width" [gridHeight]="inputData.hiddenGrid.height" #hidden></grid-canvas>
+        </div>
+
+        <div class="weights2">
+            <p class="">Weights:</p>
+            <grid-canvas [gridWidth]="inputData.weights2Grid.width" [gridHeight]="inputData.weights2Grid.height" #weights2></grid-canvas>
+        </div>
+
+    </div>
+
+
+
+</div>

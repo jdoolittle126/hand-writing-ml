@@ -1,0 +1,4 @@
+<div (mouseenter)="showPixel()" (mouseleave)="showSmooth()">
+    <canvas class="nn" [hidden]="isHovering" style="border: 1px solid #a8a8a8;" #smoothCanvas></canvas>
+    <canvas class="nn" [hidden]="!isHovering" style="border: 1px solid #a8a8a8; width:100px; height: 100px;" #pixelCanvas></canvas>
+</div>

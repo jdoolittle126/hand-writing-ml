@@ -1,1 +1,2 @@
-export { User } from './user.model';
+export { TrainingRequest } from './training.model'
+export { RecognitionRequest } from './recognition.model'

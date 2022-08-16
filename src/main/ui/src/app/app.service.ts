@@ -8,15 +8,14 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  rootURL = '/api';
+  rootURL = 'http://mlhandwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
 
-  getUsers() {
-    return this.http.get(this.rootURL + '/users');
+  trainingRequest(request: any) {
+      return this.http.post(this.rootURL + '/train', request);
   }
 
-  addUser(user: any, id: number) {
-	user.id = id;
-	return this.http.post(this.rootURL + '/user', user);
+  recognitionRequest(request: any) {
+    return this.http.post(this.rootURL + '/identify', request);
   }
 
 }

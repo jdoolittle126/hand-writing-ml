@@ -1,0 +1,32 @@
+.grid-container {
+    display: grid;
+    grid-auto-columns: minmax(min-content, max-content);
+    gap: 1em 3em;
+    text-align: center;
+}
+
+.inputs {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+.outputs {
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+
+.weights1 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+.hiddens {
+    grid-column-start: 2;
+    grid-column-end: 2;
+}
+
+.weights2 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+

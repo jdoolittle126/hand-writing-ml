@@ -1,0 +1,14 @@
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\AppController.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\TrainingRequest.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\util\TrainingModel.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\TrainingRequestData.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\controller\HandWritingController.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\RecognitionResult.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\PixelData.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\service\HandWritingService.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\util\NeuralFile.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\MachineLearningApplication.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\TrainingResult.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\links\HandWritingLinks.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\RecognitionRequest.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\util\NeuralNetwork.java

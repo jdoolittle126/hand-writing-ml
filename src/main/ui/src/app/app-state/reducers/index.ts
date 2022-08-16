@@ -5,6 +5,7 @@ import {
   ActionReducer,
   MetaReducer,
 } from '@ngrx/store';
+
 import { localStorageSync } from 'ngrx-store-localstorage';
 import * as fromRouter from '@ngrx/router-store';
 import { RouterStateUrl } from '../shared/utils';
@@ -25,14 +26,16 @@ import { storeFreeze } from 'ngrx-store-freeze';
  * notation packages up all of the exports into a single object.
  */
 
-import * as fromCreateUser from './createuser';
+import * as fromTrainingRequest from './training'
+import * as fromRecognitionRequest from './recognition'
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-    createUser: fromCreateUser.State;
+    createRecognition: fromRecognitionRequest.State;
+    createTraining: fromTrainingRequest.State;
     routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
@@ -42,15 +45,12 @@ export interface State {
  * and the current or initial state and return a new immutable state.
  */
 export const reducers: ActionReducerMap<State> = {
-    createUser: fromCreateUser.reducer,
+    createRecognition: fromRecognitionRequest.reducer,
+    createTraining: fromTrainingRequest.reducer,
     routerReducer: fromRouter.routerReducer,
 };
 
-/*localstorage setup for the store
-  Provide state (reducer) keys to sync with local storage. Returns a meta-reducer.
-*/
-
-const reducerKeys = ['loggedinuser'];
+const reducerKeys = ['key'];
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({keys: reducerKeys})(reducer);
 }
@@ -76,9 +76,13 @@ export const metaReducers: MetaReducer<State>[] =
   : [logger, storeFreeze, localStorageSyncReducer];
 
 /* Transactions State start */
-export const getCreateUserState = createFeatureSelector<fromCreateUser.State>('createUser');
+export const getNewTrainingState = createFeatureSelector<fromTrainingRequest.State>('trainingRequest');
+export const getNewRecognitionState = createFeatureSelector<fromRecognitionRequest.State>('recognitionRequest');
 
-export const getUsers = createSelector(
-  getCreateUserState,
+/*
+export const getTraining = createSelector(
+  getNewTrainingState,
   fromCreateUser.getUsers
 );
+*/
+

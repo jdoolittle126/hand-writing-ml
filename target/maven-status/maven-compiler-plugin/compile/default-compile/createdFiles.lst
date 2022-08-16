@@ -1,0 +1,14 @@
+com\jonathandoolittle\ml\dto\TrainingRequestData.class
+com\jonathandoolittle\ml\MachineLearningApplication.class
+com\jonathandoolittle\ml\dto\RecognitionRequest.class
+com\jonathandoolittle\ml\links\HandWritingLinks.class
+com\jonathandoolittle\ml\service\HandWritingService.class
+com\jonathandoolittle\ml\AppController.class
+com\jonathandoolittle\ml\dto\TrainingResult.class
+com\jonathandoolittle\ml\dto\PixelData.class
+com\jonathandoolittle\ml\dto\RecognitionResult.class
+com\jonathandoolittle\ml\controller\HandWritingController.class
+com\jonathandoolittle\ml\util\TrainingModel.class
+com\jonathandoolittle\ml\util\NeuralFile.class
+com\jonathandoolittle\ml\util\NeuralNetwork.class
+com\jonathandoolittle\ml\dto\TrainingRequest.class
