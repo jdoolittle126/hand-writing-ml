@@ -8,7 +8,7 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  rootURL = 'http://mlhandwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
+  rootURL = 'http://ml-handwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
 
   trainingRequest(request: any) {
       return this.http.post(this.rootURL + '/train', request);

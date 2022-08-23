@@ -557,7 +557,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, AppService);
 
         this.http = http;
-        this.rootURL = 'http://mlhandwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
+        this.rootURL = 'http://ml-handwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
       }
 
       _createClass(AppService, [{
@@ -1550,6 +1550,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this5.drawOnCanvas(prevPos, currentPos);
           });
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchstart').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (e) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchmove').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchend')), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchcancel')), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["pairwise"])());
+          })).subscribe(function (res) {
+            var rect = canvasEl.getBoundingClientRect();
+            var prevPos = {
+              x: res[0].touches[0].clientX - rect.left,
+              y: res[0].touches[0].clientY - rect.top
+            };
+            var currentPos = {
+              x: res[1].touches[0].clientX - rect.left,
+              y: res[1].touches[0].clientY - rect.top
+            };
+
+            _this5.drawOnCanvas(prevPos, currentPos);
+          });
         }
       }, {
         key: "drawOnCanvas",
@@ -1643,7 +1658,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       decls: 5,
       vars: 2,
-      consts: [[3, "mouseenter", "mouseleave"], [1, "nn", 2, "border", "1px solid #a8a8a8", 3, "hidden"], ["smoothCanvas", ""], [1, "nn", 2, "border", "1px solid #a8a8a8", "width", "100px", "height", "100px", 3, "hidden"], ["pixelCanvas", ""]],
+      consts: [[3, "mouseenter", "mouseleave"], [1, "nn", 2, "border", "1px solid #a8a8a8", "touch-action", "none", 3, "hidden"], ["smoothCanvas", ""], [1, "nn", 2, "border", "1px solid #a8a8a8", "width", "100px", "height", "100px", 3, "hidden"], ["pixelCanvas", ""]],
       template: function InputComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);

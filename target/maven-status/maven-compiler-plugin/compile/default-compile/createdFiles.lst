@@ -12,3 +12,4 @@ com\jonathandoolittle\ml\util\TrainingModel.class
 com\jonathandoolittle\ml\util\NeuralFile.class
 com\jonathandoolittle\ml\util\NeuralNetwork.class
 com\jonathandoolittle\ml\dto\TrainingRequest.class
+com\jonathandoolittle\ml\CorsConfig.class

@@ -10,5 +10,6 @@ P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\util\NeuralFile.java
 P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\MachineLearningApplication.java
 P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\TrainingResult.java
 P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\links\HandWritingLinks.java
+P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\CorsConfig.java
 P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\dto\RecognitionRequest.java
 P:\hand-writing-ml\src\main\java\com\jonathandoolittle\ml\util\NeuralNetwork.java

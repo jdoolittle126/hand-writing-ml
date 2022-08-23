@@ -303,7 +303,7 @@ __webpack_require__.r(__webpack_exports__);
 class AppService {
     constructor(http) {
         this.http = http;
-        this.rootURL = 'http://mlhandwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
+        this.rootURL = 'http://ml-handwriting-env.eba-6d8svthj.us-east-2.elasticbeanstalk.com/api';
     }
     trainingRequest(request) {
         return this.http.post(this.rootURL + '/train', request);
@@ -856,6 +856,23 @@ class InputComponent {
             };
             this.drawOnCanvas(prevPos, currentPos);
         });
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchstart')
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])((e) => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchmove')
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchend')), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(canvasEl, 'touchcancel')), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["pairwise"])());
+        }))
+            .subscribe((res) => {
+            const rect = canvasEl.getBoundingClientRect();
+            const prevPos = {
+                x: res[0].touches[0].clientX - rect.left,
+                y: res[0].touches[0].clientY - rect.top
+            };
+            const currentPos = {
+                x: res[1].touches[0].clientX - rect.left,
+                y: res[1].touches[0].clientY - rect.top
+            };
+            this.drawOnCanvas(prevPos, currentPos);
+        });
     }
     drawOnCanvas(prevPos, currentPos) {
         if (!this.smoothCx || this.locked) {
@@ -877,7 +894,7 @@ InputComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.smoothCanvas = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.pixelCanvas = _t.first);
-    } }, inputs: { width: "width", height: "height", data: "data" }, outputs: { isAdded: "isAdded" }, decls: 5, vars: 2, consts: [[3, "mouseenter", "mouseleave"], [1, "nn", 2, "border", "1px solid #a8a8a8", 3, "hidden"], ["smoothCanvas", ""], [1, "nn", 2, "border", "1px solid #a8a8a8", "width", "100px", "height", "100px", 3, "hidden"], ["pixelCanvas", ""]], template: function InputComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { width: "width", height: "height", data: "data" }, outputs: { isAdded: "isAdded" }, decls: 5, vars: 2, consts: [[3, "mouseenter", "mouseleave"], [1, "nn", 2, "border", "1px solid #a8a8a8", "touch-action", "none", 3, "hidden"], ["smoothCanvas", ""], [1, "nn", 2, "border", "1px solid #a8a8a8", "width", "100px", "height", "100px", 3, "hidden"], ["pixelCanvas", ""]], template: function InputComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mouseenter", function InputComponent_Template_div_mouseenter_0_listener() { return ctx.showPixel(); })("mouseleave", function InputComponent_Template_div_mouseleave_0_listener() { return ctx.showSmooth(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "canvas", 1, 2);
